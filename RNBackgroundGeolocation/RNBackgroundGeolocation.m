@@ -244,7 +244,7 @@ RCT_EXPORT_METHOD(removeGeofence:(NSString*)identifier)
     
     NSString *errorType = [notification.userInfo objectForKey:@"type"];
     if ([errorType isEqualToString:@"location"]) {
-        
+        [_bridge.eventDispatcher sendDeviceEventWithName:@"onLocationManagerError" body:notification.userInfo];
     }
 }
 
